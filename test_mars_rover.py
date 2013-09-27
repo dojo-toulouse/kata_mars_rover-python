@@ -16,3 +16,31 @@ class TestMarsRover(TestCase):
         rover = MarsRover(None, initial_direction)
 
         self.assertEquals(rover.direction, initial_direction)
+
+    def test_move_forward_to_the_north_increments_y_axis(self):
+        rover = MarsRover((0, 0), 'N')
+
+        rover.forward()
+
+        self.assertEquals(rover.position, (0, 1))
+
+    def test_move_forward_to_the_east_increments_x_axis(self):
+        rover = MarsRover((0, 0), 'E')
+
+        rover.forward()
+
+        self.assertEquals(rover.position, (1, 0))
+
+    def test_move_forward_to_the_south_decrements_y_axis(self):
+        rover = MarsRover((0, 0), 'S')
+
+        rover.forward()
+
+        self.assertEquals(rover.position, (0, -1))
+
+    def test_move_forward_to_the_west_decrements_x_axis(self):
+        rover = MarsRover((0, 0), 'W')
+
+        rover.forward()
+
+        self.assertEquals(rover.position, (-1, 0))

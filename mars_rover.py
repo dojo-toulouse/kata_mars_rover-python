@@ -31,3 +31,13 @@ class MarsRover(object):
     @property
     def direction(self):
         return self._direction
+
+    def forward(self):
+        if self.direction == 'N':
+            self._position = (self.position[0], self.position[1] + 1)
+        elif self.direction == 'E':
+            self._position = (self.position[0] + 1, self.position[1])
+        elif self.direction == 'S':
+            self._position = (self.position[0], self.position[1] - 1)
+        elif self.direction == 'W':
+            self._position = (self.position[0] - 1, self.position[1])
