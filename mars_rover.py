@@ -20,4 +20,9 @@ the rover moves up to the last possible point and reports the obstacle.
 
 
 class MarsRover(object):
-    pass
+    def __init__(self, initial_position):
+        self._position = initial_position
+
+    @property
+    def position(self):
+        return self._position

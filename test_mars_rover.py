@@ -3,8 +3,9 @@ from mars_rover import MarsRover
 
 
 class TestMarsRover(TestCase):
-    def setUp(self):
-        self.rover = MarsRover()
+    def test_accepts_initial_point(self):
+        initial_position = (0, 0)
 
-    def test_exemple(self):
-        self.assertIsInstance(self.rover, MarsRover)
+        rover = MarsRover(initial_position)
+
+        self.assertEquals(rover.position, initial_position)
