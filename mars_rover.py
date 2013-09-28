@@ -46,8 +46,8 @@ SOUTH = Direction(0, -1)
 EAST = Direction(1, 0)
 WEST = Direction(-1, 0)
 
-TO_THE_LEFT = 1
-TO_THE_RIGHT = -1
+TO_THE_LEFT = -1
+TO_THE_RIGHT = 1
 
 
 class MarsRover(object):

@@ -57,37 +57,37 @@ class TestMarsRover(TestCase):
 
         self.assertEquals(rover.position, Point(0, -1))
 
-    def test_turn_to_the_left_from_north_sets_direction_to_east(self):
-        rover = MarsRover(None, NORTH)
-
-        rover.turn_left()
-
-        self.assertEquals(rover.direction, EAST)
-
-    def test_turn_to_the_left_from_east_sets_direction_to_south(self):
-        rover = MarsRover(None, EAST)
-
-        rover.turn_left()
-
-        self.assertEquals(rover.direction, SOUTH)
-
-    def test_turn_to_the_left_from_south_sets_direction_to_west(self):
-        rover = MarsRover(None, SOUTH)
-
-        rover.turn_left()
-
-        self.assertEquals(rover.direction, WEST)
-
-    def test_turn_to_the_left_from_west_sets_direction_to_north(self):
-        rover = MarsRover(None, WEST)
-
-        rover.turn_left()
-
-        self.assertEquals(rover.direction, NORTH)
-
-    def test_turn_to_the_right_from_north_sets_direction_to_west(self):
+    def test_turn_to_the_right_from_north_sets_direction_to_east(self):
         rover = MarsRover(None, NORTH)
 
         rover.turn_right()
+
+        self.assertEquals(rover.direction, EAST)
+
+    def test_turn_to_the_right_from_east_sets_direction_to_south(self):
+        rover = MarsRover(None, EAST)
+
+        rover.turn_right()
+
+        self.assertEquals(rover.direction, SOUTH)
+
+    def test_turn_to_the_right_from_south_sets_direction_to_west(self):
+        rover = MarsRover(None, SOUTH)
+
+        rover.turn_right()
+
+        self.assertEquals(rover.direction, WEST)
+
+    def test_turn_to_the_right_from_west_sets_direction_to_north(self):
+        rover = MarsRover(None, WEST)
+
+        rover.turn_right()
+
+        self.assertEquals(rover.direction, NORTH)
+
+    def test_turn_to_the_left_from_north_sets_direction_to_west(self):
+        rover = MarsRover(None, NORTH)
+
+        rover.turn_left()
 
         self.assertEquals(rover.direction, WEST)
