@@ -20,6 +20,13 @@ the rover moves up to the last possible point and reports the obstacle.
 
 
 class MarsRover(object):
+    direction_vectors = {
+        'N': (0, 1),
+        'S': (0, -1),
+        'E': (1, 0),
+        'W': (-1, 0),
+    }
+
     def __init__(self, initial_position, initial_direction):
         self._position = initial_position
         self._direction = initial_direction
@@ -33,11 +40,6 @@ class MarsRover(object):
         return self._direction
 
     def forward(self):
-        if self.direction == 'N':
-            self._position = (self.position[0], self.position[1] + 1)
-        elif self.direction == 'E':
-            self._position = (self.position[0] + 1, self.position[1])
-        elif self.direction == 'S':
-            self._position = (self.position[0], self.position[1] - 1)
-        elif self.direction == 'W':
-            self._position = (self.position[0] - 1, self.position[1])
+        direction_vector = self.direction_vectors[self.direction]
+        self._position = (self.position[0] + direction_vector[0],
+                          self.position[1] + direction_vector[1])
