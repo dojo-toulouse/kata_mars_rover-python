@@ -46,6 +46,9 @@ SOUTH = Direction(0, -1)
 EAST = Direction(1, 0)
 WEST = Direction(-1, 0)
 
+TO_THE_LEFT = 1
+TO_THE_RIGHT = -1
+
 
 class MarsRover(object):
     _directions = (
@@ -73,18 +76,19 @@ class MarsRover(object):
     def move_backward(self):
         self._position -= self.direction
 
-    def _left_of(self, direction):
-        index = self._directions.index(direction) + 1
+    def _get_direction(self, start, where):
+        index = self._directions.index(start) + where
         index %= 4
         return self._directions[index]
+
+    def _left_of(self, direction):
+        return self._get_direction(direction, TO_THE_LEFT)
+
+    def _right_of(self, direction):
+        return self._get_direction(direction, TO_THE_RIGHT)
 
     def turn_left(self):
         self._direction = self._left_of(self._direction)
-
-    def _right_of(self, direction):
-        index = self._directions.index(direction) - 1
-        index %= 4
-        return self._directions[index]
 
     def turn_right(self):
         self._direction = self._right_of(self._direction)
