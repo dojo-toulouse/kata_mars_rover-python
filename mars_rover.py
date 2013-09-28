@@ -37,23 +37,14 @@ class Point(tuple):
 
 
 class Direction(Point):
-    coords = {
-        'N': (0, 1),
-        'S': (0, -1),
-        'E': (1, 0),
-        'W': (-1, 0),
-    }
-
-    def __new__(cls, name):
-        instance = Point.__new__(cls, *cls.coords[name])
-        instance.name = name
-        return instance
+    def __new__(cls, *coords):
+        return Point.__new__(cls, *coords)
 
 
-NORTH = Direction('N')
-SOUTH = Direction('S')
-EAST = Direction('E')
-WEST = Direction('W')
+NORTH = Direction(0, 1)
+SOUTH = Direction(0, -1)
+EAST = Direction(1, 0)
+WEST = Direction(-1, 0)
 
 
 class MarsRover(object):
