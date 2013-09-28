@@ -36,40 +36,46 @@ class Point(tuple):
         return Point(*result)
 
 
-class MarsRover(object):
-    directions = {
-        'N': Point(0, 1),
-        'S': Point(0, -1),
-        'E': Point(1, 0),
-        'W': Point(-1, 0),
+class Direction(Point):
+    coords = {
+        'N': (0, 1),
+        'S': (0, -1),
+        'E': (1, 0),
+        'W': (-1, 0),
     }
 
-    def __init__(self, initial_position, initial_direction_name):
+    def __new__(cls, name):
+        instance = Point.__new__(cls, *cls.coords[name])
+        instance.name = name
+        return instance
+
+
+class MarsRover(object):
+
+    def __init__(self, initial_position, initial_direction):
         self._position = initial_position
-        self._direction_name = initial_direction_name
+        self._direction = initial_direction
 
     @property
     def position(self):
         return self._position
 
     @property
-    def direction_name(self):
-        return self._direction_name
+    def direction(self):
+        return self._direction
 
     def move_forward(self):
-        direction = self.directions[self.direction_name]
-        self._position += direction
+        self._position += self.direction
 
     def move_backward(self):
-        direction = self.directions[self.direction_name]
-        self._position -= direction
+        self._position -= self.direction
 
     def turn_left(self):
-        if self.direction_name == 'N':
-            self._direction_name = 'E'
-        elif self.direction_name == 'E':
-            self._direction_name = 'S'
-        elif self.direction_name == 'S':
-            self._direction_name = 'W'
+        if self.direction == Direction('N'):
+            self._direction = Direction('E')
+        elif self.direction == Direction('E'):
+            self._direction = Direction('S')
+        elif self.direction == Direction('S'):
+            self._direction = Direction('W')
         else:
-            self._direction_name = 'N'
+            self._direction = Direction('N')
