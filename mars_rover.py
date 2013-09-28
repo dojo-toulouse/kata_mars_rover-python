@@ -63,3 +63,13 @@ class MarsRover(object):
     def backward(self):
         direction = self.directions[self.direction_name]
         self._position -= direction
+
+    def turn_left(self):
+        if self.direction_name == 'N':
+            self._direction_name = 'E'
+        elif self.direction_name == 'E':
+            self._direction_name = 'S'
+        elif self.direction_name == 'S':
+            self._direction_name = 'W'
+        else:
+            self._direction_name = 'N'

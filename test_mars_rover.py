@@ -51,3 +51,31 @@ class TestMarsRover(TestCase):
         rover.backward()
 
         self.assertEquals(rover.position, Point(0, -1))
+
+    def test_turn_to_the_left_from_north_sets_direction_to_east(self):
+        rover = MarsRover(None, 'N')
+
+        rover.turn_left()
+
+        self.assertEquals(rover.direction_name, 'E')
+
+    def test_turn_to_the_left_from_east_sets_direction_to_south(self):
+        rover = MarsRover(None, 'E')
+
+        rover.turn_left()
+
+        self.assertEquals(rover.direction_name, 'S')
+
+    def test_turn_to_the_left_from_south_sets_direction_to_west(self):
+        rover = MarsRover(None, 'S')
+
+        rover.turn_left()
+
+        self.assertEquals(rover.direction_name, 'W')
+
+    def test_turn_to_the_left_from_west_sets_direction_to_north(self):
+        rover = MarsRover(None, 'W')
+
+        rover.turn_left()
+
+        self.assertEquals(rover.direction_name, 'N')
