@@ -44,3 +44,10 @@ class TestMarsRover(TestCase):
         rover.forward()
 
         self.assertEquals(rover.position, (-1, 0))
+
+    def test_move_backward_to_the_north_decrements_y_axis(self):
+        rover = MarsRover((0, 0), 'N')
+
+        rover.backward()
+
+        self.assertEquals(rover.position, (0, -1))

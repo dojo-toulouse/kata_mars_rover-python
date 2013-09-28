@@ -43,3 +43,8 @@ class MarsRover(object):
         direction_vector = self.direction_vectors[self.direction]
         self._position = (self.position[0] + direction_vector[0],
                           self.position[1] + direction_vector[1])
+
+    def backward(self):
+        direction_vector = self.direction_vectors[self.direction]
+        self._position = (self.position[0] - direction_vector[0],
+                          self.position[1] - direction_vector[1])
