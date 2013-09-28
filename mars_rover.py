@@ -19,32 +19,47 @@ the rover moves up to the last possible point and reports the obstacle.
 """
 
 
+class Point(tuple):
+    def __new__(cls, *coords):
+        return tuple.__new__(cls, coords)
+
+    def __add__(self, other):
+        values_by_axis = zip(self, other)
+        add_axis_value = lambda a: a[0] + a[1]
+        result = map(add_axis_value, values_by_axis)
+        return Point(*result)
+
+    def __sub__(self, other):
+        values_by_axis = zip(self, other)
+        add_axis_value = lambda a: a[0] - a[1]
+        result = map(add_axis_value, values_by_axis)
+        return Point(*result)
+
+
 class MarsRover(object):
-    direction_vectors = {
-        'N': (0, 1),
-        'S': (0, -1),
-        'E': (1, 0),
-        'W': (-1, 0),
+    directions = {
+        'N': Point(0, 1),
+        'S': Point(0, -1),
+        'E': Point(1, 0),
+        'W': Point(-1, 0),
     }
 
-    def __init__(self, initial_position, initial_direction):
+    def __init__(self, initial_position, initial_direction_name):
         self._position = initial_position
-        self._direction = initial_direction
+        self._direction_name = initial_direction_name
 
     @property
     def position(self):
         return self._position
 
     @property
-    def direction(self):
-        return self._direction
+    def direction_name(self):
+        return self._direction_name
 
     def forward(self):
-        direction_vector = self.direction_vectors[self.direction]
-        self._position = (self.position[0] + direction_vector[0],
-                          self.position[1] + direction_vector[1])
+        direction = self.directions[self.direction_name]
+        self._position += direction
 
     def backward(self):
-        direction_vector = self.direction_vectors[self.direction]
-        self._position = (self.position[0] - direction_vector[0],
-                          self.position[1] - direction_vector[1])
+        direction = self.directions[self.direction_name]
+        self._position -= direction
