@@ -20,35 +20,35 @@ class TestMarsRover(TestCase):
     def test_move_forward_to_the_north_increments_y_axis(self):
         rover = MarsRover(Point(0, 0), 'N')
 
-        rover.forward()
+        rover.move_forward()
 
         self.assertEquals(rover.position, Point(0, 1))
 
     def test_move_forward_to_the_east_increments_x_axis(self):
         rover = MarsRover(Point(0, 0), 'E')
 
-        rover.forward()
+        rover.move_forward()
 
         self.assertEquals(rover.position, Point(1, 0))
 
     def test_move_forward_to_the_south_decrements_y_axis(self):
         rover = MarsRover(Point(0, 0), 'S')
 
-        rover.forward()
+        rover.move_forward()
 
         self.assertEquals(rover.position, Point(0, -1))
 
     def test_move_forward_to_the_west_decrements_x_axis(self):
         rover = MarsRover(Point(0, 0), 'W')
 
-        rover.forward()
+        rover.move_forward()
 
         self.assertEquals(rover.position, Point(-1, 0))
 
     def test_move_backward_to_the_north_decrements_y_axis(self):
         rover = MarsRover(Point(0, 0), 'N')
 
-        rover.backward()
+        rover.move_backward()
 
         self.assertEquals(rover.position, Point(0, -1))
 

@@ -56,11 +56,11 @@ class MarsRover(object):
     def direction_name(self):
         return self._direction_name
 
-    def forward(self):
+    def move_forward(self):
         direction = self.directions[self.direction_name]
         self._position += direction
 
-    def backward(self):
+    def move_backward(self):
         direction = self.directions[self.direction_name]
         self._position -= direction
 
