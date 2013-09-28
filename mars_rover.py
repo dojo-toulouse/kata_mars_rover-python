@@ -80,3 +80,11 @@ class MarsRover(object):
 
     def turn_left(self):
         self._direction = self._left_of(self._direction)
+
+    def _right_of(self, direction):
+        index = self._directions.index(direction) - 1
+        index %= 4
+        return self._directions[index]
+
+    def turn_right(self):
+        self._direction = self._right_of(self._direction)

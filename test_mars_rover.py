@@ -84,3 +84,10 @@ class TestMarsRover(TestCase):
         rover.turn_left()
 
         self.assertEquals(rover.direction, NORTH)
+
+    def test_turn_to_the_right_from_north_sets_direction_to_west(self):
+        rover = MarsRover(None, NORTH)
+
+        rover.turn_right()
+
+        self.assertEquals(rover.direction, WEST)
