@@ -50,6 +50,12 @@ class Direction(Point):
         return instance
 
 
+NORTH = Direction('N')
+SOUTH = Direction('S')
+EAST = Direction('E')
+WEST = Direction('W')
+
+
 class MarsRover(object):
 
     def __init__(self, initial_position, initial_direction):
@@ -71,11 +77,11 @@ class MarsRover(object):
         self._position -= self.direction
 
     def turn_left(self):
-        if self.direction == Direction('N'):
-            self._direction = Direction('E')
-        elif self.direction == Direction('E'):
-            self._direction = Direction('S')
-        elif self.direction == Direction('S'):
-            self._direction = Direction('W')
+        if self.direction is NORTH:
+            self._direction = EAST
+        elif self.direction is EAST:
+            self._direction = SOUTH
+        elif self.direction is SOUTH:
+            self._direction = WEST
         else:
-            self._direction = Direction('N')
+            self._direction = NORTH
