@@ -73,7 +73,10 @@ class MarsRover(object):
     def move_backward(self):
         self._position -= self.direction
 
-    def turn_left(self):
-        index = self._directions.index(self._direction) + 1
+    def _left_of(self, direction):
+        index = self._directions.index(direction) + 1
         index %= 4
-        self._direction = self._directions[index]
+        return self._directions[index]
+
+    def turn_left(self):
+        self._direction = self._left_of(self._direction)
