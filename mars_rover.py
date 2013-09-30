@@ -50,7 +50,7 @@ TO_THE_LEFT = -1
 TO_THE_RIGHT = 1
 
 
-class MarsRover(object):
+class Grid(object):
     _directions = (
         NORTH,
         EAST,
@@ -59,36 +59,42 @@ class MarsRover(object):
     )
 
     def __init__(self, initial_position, initial_direction):
-        self._position = initial_position
-        self._direction = initial_direction
-
-    @property
-    def position(self):
-        return self._position
-
-    @property
-    def direction(self):
-        return self._direction
-
-    def move_forward(self):
-        self._position += self.direction
-
-    def move_backward(self):
-        self._position -= self.direction
+        self.position = initial_position
+        self.direction = initial_direction
 
     def _get_direction(self, start, where):
         index = self._directions.index(start) + where
         index %= 4
         return self._directions[index]
 
-    def _left_of(self, direction):
+    def left_of(self, direction):
         return self._get_direction(direction, TO_THE_LEFT)
 
-    def _right_of(self, direction):
+    def right_of(self, direction):
         return self._get_direction(direction, TO_THE_RIGHT)
 
+
+class MarsRover(object):
+
+    def __init__(self, initial_position, initial_direction):
+        self._grid = Grid(initial_position, initial_direction)
+
+    @property
+    def position(self):
+        return self._grid.position
+
+    @property
+    def direction(self):
+        return self._grid.direction
+
+    def move_forward(self):
+        self._grid.position += self._grid.direction
+
+    def move_backward(self):
+        self._grid.position -= self._grid.direction
+
     def turn_left(self):
-        self._direction = self._left_of(self._direction)
+        self._grid.direction = self._grid.left_of(self._grid.direction)
 
     def turn_right(self):
-        self._direction = self._right_of(self._direction)
+        self._grid.direction = self._grid.right_of(self._grid.direction)
