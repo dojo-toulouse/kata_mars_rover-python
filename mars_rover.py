@@ -17,6 +17,7 @@ Implement obstacle detection before each move to a new square.
 If a given sequence of commands encounters an obstacle,
 the rover moves up to the last possible point and reports the obstacle.
 """
+from operator import add
 
 
 class Point(tuple):
@@ -29,7 +30,7 @@ class Point(tuple):
         return Point(*result)
 
     def __add__(self, other):
-        add_axis_value = lambda a: a[0] + a[1]
+        add_axis_value = lambda a: add(*a)
         return self._operation(add_axis_value, other)
 
     def __sub__(self, other):
