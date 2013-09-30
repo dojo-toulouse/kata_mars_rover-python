@@ -98,3 +98,10 @@ class TestMarsRover(TestCase):
         rover.move_forward()
 
         self.assertEquals(rover.position, Point(0, 0))
+
+    def test_wraps_when_forward_and_east_limit_reached(self):
+        rover = MarsRover(Point(10, 0), EAST)
+
+        rover.move_forward()
+
+        self.assertEquals(rover.position, Point(0, 0))
