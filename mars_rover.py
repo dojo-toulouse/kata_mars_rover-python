@@ -67,10 +67,10 @@ class Grid(object):
         index %= 4
         return self._directions[index]
 
-    def left_of(self):
+    def left_direction(self):
         return self._get_direction(self.direction, TO_THE_LEFT)
 
-    def right_of(self):
+    def right_direction(self):
         return self._get_direction(self.direction, TO_THE_RIGHT)
 
 
@@ -94,7 +94,7 @@ class MarsRover(object):
         self._grid.position -= self._grid.direction
 
     def turn_left(self):
-        self._grid.direction = self._grid.left_of()
+        self._grid.direction = self._grid.left_direction()
 
     def turn_right(self):
-        self._grid.direction = self._grid.right_of()
+        self._grid.direction = self._grid.right_direction()
