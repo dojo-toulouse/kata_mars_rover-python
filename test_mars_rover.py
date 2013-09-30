@@ -91,3 +91,10 @@ class TestMarsRover(TestCase):
         rover.turn_left()
 
         self.assertEquals(rover.direction, WEST)
+
+    def test_wraps_when_forward_and_north_limit_reached(self):
+        rover = MarsRover(Point(0, 10), NORTH)
+
+        rover.move_forward()
+
+        self.assertEquals(rover.position, Point(0, 0))

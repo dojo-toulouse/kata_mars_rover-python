@@ -58,9 +58,10 @@ class Grid(object):
         WEST
     )
 
-    def __init__(self, initial_position, initial_direction):
+    def __init__(self, initial_position, initial_direction, size=10):
         self.position = initial_position
         self.direction = initial_direction
+        self._size = size
 
     def _get_direction(self, start, where):
         index = self._directions.index(start) + where
@@ -88,7 +89,11 @@ class MarsRover(object):
         return self._grid.direction
 
     def move_forward(self):
-        self._grid.position += self._grid.direction
+        next_position = self._grid.position + self._grid.direction
+        if next_position[1] >= 10:
+            self._grid.position = Point(0, 0)
+        else:
+            self._grid.position = next_position
 
     def move_backward(self):
         self._grid.position -= self._grid.direction
