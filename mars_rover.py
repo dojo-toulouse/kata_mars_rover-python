@@ -26,16 +26,14 @@ class Point(tuple):
 
     def _operation(self, operator, other):
         values_by_axis = zip(self, other)
-        result = map(operator, values_by_axis)
+        result = map(lambda a: operator(*a), values_by_axis)
         return Point(*result)
 
     def __add__(self, other):
-        add_axis_value = lambda a: add(*a)
-        return self._operation(add_axis_value, other)
+        return self._operation(add, other)
 
     def __sub__(self, other):
-        sub_axis_value = lambda a: sub(*a)
-        return self._operation(sub_axis_value, other)
+        return self._operation(sub, other)
 
 
 class Direction(Point):
