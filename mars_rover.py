@@ -31,8 +31,8 @@ class Point(tuple):
 
     def __sub__(self, other):
         values_by_axis = zip(self, other)
-        add_axis_value = lambda a: a[0] - a[1]
-        result = map(add_axis_value, values_by_axis)
+        sub_axis_value = lambda a: a[0] - a[1]
+        result = map(sub_axis_value, values_by_axis)
         return Point(*result)
 
 
