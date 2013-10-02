@@ -93,6 +93,12 @@ class Grid(object):
 
 
 class MarsRover(object):
+    _commands_map = {
+        'l': 'turn_left',
+        'r': 'turn_right',
+        'f': 'move_forward',
+        'b': 'move_backward',
+    }
 
     def __init__(self, initial_position, initial_direction, size=(10, 10)):
         self._grid = Grid(initial_position, initial_direction, size)
@@ -119,11 +125,5 @@ class MarsRover(object):
 
     def move(self, commands):
         for command in commands:
-            if command == 'l':
-                self.turn_left()
-            elif command == 'r':
-                self.turn_right()
-            elif command == 'f':
-                self.move_forward()
-            elif command == 'b':
-                self.move_backward()
+            handler = getattr(self, self._commands_map[command])
+            handler()
