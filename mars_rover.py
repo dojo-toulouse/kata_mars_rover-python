@@ -58,9 +58,10 @@ class Grid(object):
         WEST
     )
 
-    def __init__(self, initial_position, initial_direction):
-        self._position = initial_position
-        self.direction = initial_direction
+    def __init__(self, position=Point(0, 0), direction=NORTH, size=(10, 10)):
+        self._position = position
+        self.direction = direction
+        self._size = size
 
     @property
     def position(self):
@@ -68,14 +69,14 @@ class Grid(object):
 
     @position.setter
     def position(self, value):
-        if value[1] >= 10:
+        if value[1] >= self._size[1]:
             self._position = Point(value[0], 0)
         elif value[1] < 0:
-            self._position = Point(value[0], 10)
-        elif value[0] >= 10:
+            self._position = Point(value[0], self._size[1])
+        elif value[0] >= self._size[0]:
             self._position = Point(0, value[1])
         elif value[0] < 0:
-            self._position = Point(10, value[1])
+            self._position = Point(self._size[0], value[1])
         else:
             self._position = value
 
