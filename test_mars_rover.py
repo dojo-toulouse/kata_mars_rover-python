@@ -23,39 +23,39 @@ class TestMarsRover(TestCase):
         self.assertIs(rover.direction, NORTH)
 
     def test_move_forward_to_the_north_increments_y_axis(self):
-        rover = MarsRover(Point(0, 0), NORTH)
+        rover = MarsRover(Point(3, 3), NORTH)
 
         rover.move_forward()
 
-        self.assertEquals(rover.position, Point(0, 1))
+        self.assertEquals(rover.position, Point(3, 4))
 
     def test_move_forward_to_the_east_increments_x_axis(self):
-        rover = MarsRover(Point(0, 0), EAST)
+        rover = MarsRover(Point(3, 3), EAST)
 
         rover.move_forward()
 
-        self.assertEquals(rover.position, Point(1, 0))
+        self.assertEquals(rover.position, Point(4, 3))
 
     def test_move_forward_to_the_south_decrements_y_axis(self):
-        rover = MarsRover(Point(0, 0), SOUTH)
+        rover = MarsRover(Point(3, 3), SOUTH)
 
         rover.move_forward()
 
-        self.assertEquals(rover.position, Point(0, -1))
+        self.assertEquals(rover.position, Point(3, 2))
 
     def test_move_forward_to_the_west_decrements_x_axis(self):
-        rover = MarsRover(Point(0, 0), WEST)
+        rover = MarsRover(Point(3, 3), WEST)
 
         rover.move_forward()
 
-        self.assertEquals(rover.position, Point(-1, 0))
+        self.assertEquals(rover.position, Point(2, 3))
 
     def test_move_backward_to_the_north_decrements_y_axis(self):
-        rover = MarsRover(Point(0, 0), NORTH)
+        rover = MarsRover(Point(3, 3), NORTH)
 
         rover.move_backward()
 
-        self.assertEquals(rover.position, Point(0, -1))
+        self.assertEquals(rover.position, Point(3, 2))
 
     def test_turn_to_the_right_from_north_sets_direction_to_east(self):
         rover = MarsRover(None, NORTH)
