@@ -58,10 +58,9 @@ class Grid(object):
         WEST
     )
 
-    def __init__(self, initial_position, initial_direction, size=10):
+    def __init__(self, initial_position, initial_direction):
         self.position = initial_position
         self.direction = initial_direction
-        self._size = size
 
     def _get_direction(self, start, where):
         index = self._directions.index(start) + where
