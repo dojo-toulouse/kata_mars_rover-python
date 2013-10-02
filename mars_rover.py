@@ -94,8 +94,8 @@ class Grid(object):
 
 class MarsRover(object):
 
-    def __init__(self, initial_position, initial_direction):
-        self._grid = Grid(initial_position, initial_direction)
+    def __init__(self, initial_position, initial_direction, size=(10, 10)):
+        self._grid = Grid(initial_position, initial_direction, size)
 
     @property
     def position(self):
