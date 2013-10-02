@@ -68,7 +68,16 @@ class Grid(object):
 
     @position.setter
     def position(self, value):
-        self._position = value
+        if value[1] >= 10:
+            self._position = Point(value[0], 0)
+        elif value[1] < 0:
+            self._position = Point(value[0], 10)
+        elif value[0] >= 10:
+            self._position = Point(0, value[1])
+        elif value[0] < 0:
+            self._position = Point(10, value[1])
+        else:
+            self._position = value
 
     def _get_direction(self, start, where):
         index = self._directions.index(start) + where
@@ -97,16 +106,7 @@ class MarsRover(object):
 
     def move_forward(self):
         next_position = self._grid.position + self._grid.direction
-        if next_position[1] >= 10:
-            self._grid.position = Point(next_position[0], 0)
-        elif next_position[1] < 0:
-            self._grid.position = Point(next_position[0], 10)
-        elif next_position[0] >= 10:
-            self._grid.position = Point(0, next_position[1])
-        elif next_position[0] < 0:
-            self._grid.position = Point(10, next_position[1])
-        else:
-            self._grid.position = next_position
+        self._grid.position = next_position
 
     def move_backward(self):
         self._grid.position -= self._grid.direction
