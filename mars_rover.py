@@ -91,9 +91,9 @@ class MarsRover(object):
     def move_forward(self):
         next_position = self._grid.position + self._grid.direction
         if next_position[1] >= 10:
-            self._grid.position = Point(0, 0)
+            self._grid.position = Point(next_position[0], 0)
         elif next_position[0] >= 10:
-            self._grid.position = Point(0, 0)
+            self._grid.position = Point(0, next_position[1])
         else:
             self._grid.position = next_position
 
