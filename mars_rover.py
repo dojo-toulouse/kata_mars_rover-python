@@ -123,7 +123,10 @@ class MarsRover(object):
     def turn_right(self):
         self._grid.direction = self._grid.right_direction()
 
+    def _call(self, command):
+        handler = getattr(self, self._commands_map[command])
+        handler()
+
     def move(self, commands):
         for command in commands:
-            handler = getattr(self, self._commands_map[command])
-            handler()
+            self._call(command)
