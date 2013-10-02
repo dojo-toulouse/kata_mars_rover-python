@@ -59,8 +59,16 @@ class Grid(object):
     )
 
     def __init__(self, initial_position, initial_direction):
-        self.position = initial_position
+        self._position = initial_position
         self.direction = initial_direction
+
+    @property
+    def position(self):
+        return self._position
+
+    @position.setter
+    def position(self, value):
+        self._position = value
 
     def _get_direction(self, start, where):
         index = self._directions.index(start) + where
