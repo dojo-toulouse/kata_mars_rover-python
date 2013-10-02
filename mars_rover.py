@@ -105,8 +105,7 @@ class MarsRover(object):
         return self._grid.direction
 
     def move_forward(self):
-        next_position = self._grid.position + self._grid.direction
-        self._grid.position = next_position
+        self._grid.position += self._grid.direction
 
     def move_backward(self):
         self._grid.position -= self._grid.direction
