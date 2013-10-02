@@ -116,3 +116,14 @@ class MarsRover(object):
 
     def turn_right(self):
         self._grid.direction = self._grid.right_direction()
+
+    def move(self, commands):
+        for command in commands:
+            if command == 'l':
+                self.turn_left()
+            elif command == 'r':
+                self.turn_right()
+            elif command == 'f':
+                self.move_forward()
+            elif command == 'b':
+                self.move_backward()

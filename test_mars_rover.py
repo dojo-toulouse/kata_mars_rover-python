@@ -119,3 +119,10 @@ class TestMarsRover(TestCase):
         rover.move_forward()
 
         self.assertEquals(rover.position, Point(10, 0))
+
+    def test_array_of_commands(self):
+        rover = MarsRover(Point(0, 42), WEST, (24, 42))
+
+        rover.move('lflfrblb')
+
+        self.assertEquals(rover.direction, EAST)
